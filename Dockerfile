@@ -13,15 +13,10 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 
-# Installez Yarn globalement
-RUN npm install -g yarn
 
 # Copiez les fichiers de dépendances
 COPY package.json .
-COPY yarn.lock .
 
-# Installez les dépendances du projet avec Yarn
-RUN yarn install --frozen-lockfile
 
 # Copiez le reste de l'application
 COPY . .
